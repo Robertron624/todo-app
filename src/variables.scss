@@ -32,6 +32,7 @@ $themes: (
         light-grayish-blue: hsl(233, 11%, 84%),
         dark-grayish-blue: hsl(236, 9%, 61%),
         very-dark-grayish-blue: hsl(235, 19%, 35%),
+        header-background: url(/bg-desktop-light.jpg) no-repeat center/cover,
     ),
     dark: (
         very-dark-blue: hsl(235, 21%, 11%),
@@ -41,6 +42,7 @@ $themes: (
         dark-grayish-blue: hsl(234, 11%, 52%),
         very-dark-grayish-blue: hsl(233, 14%, 35%),
         very-dark-grayish-blue-2: hsl(237, 14%, 26%),
+        header-background: url(/bg-desktop-dark.jpg) no-repeat center/cover,
     ),
 );
 

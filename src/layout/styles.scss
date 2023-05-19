@@ -1,0 +1,31 @@
+@import '/src/variables.scss';
+
+header {
+    height: 8rem;
+    display: flex;
+    align-items: center;
+
+
+    @include themify($themes) {
+        background: themed(header-background);
+    }
+
+    .inner {
+        justify-content: space-between;
+        align-items: center;
+        margin-inline: auto;
+        display: flex;
+        width: 90%;
+
+        .logo {
+            color: white;
+            letter-spacing: 10px;
+        }
+    }
+
+
+    button {
+        background: none;
+        border: none;
+    }
+}
