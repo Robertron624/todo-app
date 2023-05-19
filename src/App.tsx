@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.scss'
 import { ThemeContext } from './contexts/themeContext'
 import Layout from './layout'
+import NewTodo from './components/NewTodo'
 
 function App() {
   const [theme, setTheme] = useState<string>('light')
@@ -10,9 +11,9 @@ function App() {
     <ThemeContext.Provider value={{theme, setTheme}}>
       <div className={`theme-${theme}`}>
           <Layout>
-            <div className="content-wrapper">
-              
-            </div>
+            <main className="content-wrapper">
+              <NewTodo />
+            </main>
           </Layout>
       </div>
     </ThemeContext.Provider>

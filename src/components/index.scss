@@ -1,0 +1,57 @@
+@import '/src/variables.scss';
+
+
+form {
+    @include themify($themes) {
+        background: themed(new-todo-background);
+    }
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    padding: 1rem;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+
+    position: absolute;
+    top: -15%;
+
+    label {
+        display: flex;
+
+
+        #todo {
+            &::placeholder {
+                font-weight: 700;
+            }
+            border: none;
+            background-color: transparent;
+        }
+    
+        input[type="checkbox"] {
+            /* Add if not using autoprefixer */
+            -webkit-appearance: none;
+            appearance: none;
+            /* For iOS < 15 to remove gradient background */
+            background-color: transparent;
+            /* Not removed via appearance */
+            margin: 0;
+
+            font: inherit;
+
+            @include themify($themes) {
+                color: themed(light-grayish-blue);
+            }
+
+            width: 1.15em;
+            height: 1.15em;
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            transform: translateY(-0.075em);
+        }
+        
+    }
+
+}
+

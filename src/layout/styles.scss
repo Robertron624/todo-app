@@ -1,9 +1,11 @@
 @import '/src/variables.scss';
 
 header {
-    height: 8rem;
+    height: 12rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+
+    padding-top: 2rem;
 
 
     @include themify($themes) {

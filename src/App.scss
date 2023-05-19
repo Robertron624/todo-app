@@ -1,6 +1,19 @@
+@import '/src/variables.scss';
+
 #root {
   max-width: 1280px;
   // margin: 0 auto;
   text-align: center;
   width: 100%;
+}
+
+.content-wrapper {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  @include themify($themes) {
+    background: themed(main-background);
+  }
 }
