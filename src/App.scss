@@ -19,5 +19,20 @@
 
   .todos-list {
     width: 100%;
+
+    ul {
+      li:first-of-type {
+        
+        .todo-wrapper {
+          border-radius: 10px 10px 0 0;
+        }
+      }
+
+      li:last-of-type {
+        .todo-wrapper {
+          border-radius: 0 0 10px 10px;
+        }
+      }
+    }
   }
 }
