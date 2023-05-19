@@ -101,10 +101,8 @@ Use this section to outline areas that you want to continue focusing on in futur
 - [A Complete Guide to Implementing Dark Mode in React](https://betterprogramming.pub/a-complete-guide-to-implementing-dark-mode-in-react-47af893b22eb) - This is a great article which helped me finally understand how to implement dark mode in react with the use of sass (one of my favorite CSS pre-processor). I'd recommend it to anyone still learning this concept.
 
 
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally u
-nderstand XYZ. I'd recommend it to anyone still learning this concept.
+- [Pure CSS Custom Checkbox Style](https://moderncss.dev/pure-css-custom-checkbox-style/) - This is an amazing article which helped me finally understand how to implement custom checkboxes in react with the use of sass (one of my favorite CSS pre-processor). If you want to create custom checkboxes, give this article a read.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 

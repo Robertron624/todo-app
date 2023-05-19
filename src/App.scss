@@ -16,4 +16,8 @@
   @include themify($themes) {
     background: themed(main-background);
   }
+
+  .todos-list {
+    width: 100%;
+  }
 }
