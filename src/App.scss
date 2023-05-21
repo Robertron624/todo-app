@@ -11,7 +11,8 @@
   height: 100vh;
   position: relative;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   @include themify($themes) {
     background: themed(main-background);
@@ -20,6 +21,33 @@
   .todos-list {
     width: 100%;
 
+    .total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      width: 80%;
+      margin: 0 auto;
+      border-radius: 0 0 10px 10px;
+  
+      padding: 1.3rem 1rem;
+      color: $dark-grayish-blue;
+      font-size: 12px;
+  
+      @include themify($themes) {
+          background: themed(new-todo-background);
+      }
+
+      button {
+        background: none;
+        border: none;
+        color: $dark-grayish-blue;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 12px;
+      }	  
+    }
+
     ul {
       li:first-of-type {
         
@@ -27,11 +55,39 @@
           border-radius: 10px 10px 0 0;
         }
       }
+    }
+  }
 
-      li:last-of-type {
-        .todo-wrapper {
-          border-radius: 0 0 10px 10px;
-        }
+  .filters {
+    width: 90%;
+    margin: 1rem auto 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    padding: .8rem 0rem;
+    border-radius: 6px;
+
+    @include themify($themes) {
+        background: themed(new-todo-background);
+    }
+
+    .filters-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      button {
+        background: none;
+        border: none;
+        color: $dark-grayish-blue;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      .active {
+        color: $-bright-blue;
       }
     }
   }

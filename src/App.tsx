@@ -27,6 +27,13 @@ const mockTodos = [
 function App() {
   const [theme, setTheme] = useState<string>('light')
 
+  const [activeFilter, setActiveFilter] = useState<string>('all')
+
+  const handleFilter = (e: any) => {
+    const filter = e.target.id
+    setActiveFilter(filter)
+  }
+
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>
       <div className={`theme-${theme}`}>
@@ -40,6 +47,23 @@ function App() {
                       <Todo {...todo} />
                     </li>
                   ))}
+                </ul>
+                <div className="total">
+                  <span>3 items left</span>
+                  <button className="clear">Clear Completed</button>
+                </div>
+              </section>
+              <section className="filters">
+                <ul className="filters-wrapper">
+                  <li>
+                    <button onClick={handleFilter} id='all' className={activeFilter == 'all' ? 'active': ''}>All</button>
+                  </li>
+                  <li>
+                    <button onClick={handleFilter} id='active' className={activeFilter == 'active' ? 'active': ''}>Active</button>
+                  </li>
+                  <li>
+                    <button onClick={handleFilter} id='completed' className={activeFilter == 'completed' ? 'active': ''}>Completed</button>
+                  </li>
                 </ul>
               </section>
             </main>
