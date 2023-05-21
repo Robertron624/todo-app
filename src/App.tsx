@@ -4,6 +4,7 @@ import { ThemeContext } from './contexts/themeContext'
 import Layout from './layout'
 import NewTodo from './components/NewTodo/NewTodo'
 import Todo from './components/TodoComponent/Todo'
+import { ToDo } from './types'
 
 
 const mockTodos = [
@@ -29,9 +30,24 @@ function App() {
 
   const [activeFilter, setActiveFilter] = useState<string>('all')
 
-  const handleFilter = (e: any) => {
-    const filter = e.target.id
+  const [filteredTodos, setFilteredTodos] = useState<ToDo[]>(mockTodos)
+
+  const handleFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const filter = e.currentTarget.id
     setActiveFilter(filter)
+    switch (filter) {
+      case 'all':
+        setFilteredTodos(mockTodos)
+        break;
+      case 'active':
+        setFilteredTodos(mockTodos.filter(todo => !todo.done))
+        break;
+      case 'completed':
+        setFilteredTodos(mockTodos.filter(todo => todo.done))
+        break;
+      default:
+        break;
+    }
   }
 
   return (
@@ -42,14 +58,14 @@ function App() {
               <NewTodo />
               <section className="todos-list">
                 <ul>
-                  {mockTodos.map(todo => (
+                  {filteredTodos.map(todo => (
                     <li key={todo.id}>
                       <Todo {...todo} />
                     </li>
                   ))}
                 </ul>
                 <div className="total">
-                  <span>3 items left</span>
+                  <span>{filteredTodos.filter((todo) => todo.done != true).length} items left</span>
                   <button className="clear">Clear Completed</button>
                 </div>
               </section>
