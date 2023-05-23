@@ -3,7 +3,7 @@ import { ThemeContext } from "../contexts/themeContext";
 
 import "./styles.scss";
 
-const header = () => {
+const Header = () => {
     const { theme, setTheme } = useContext(ThemeContext);
 
     const handleTheme = () => {
@@ -32,4 +32,4 @@ const header = () => {
     );
 };
 
-export default header;
+export default Header;
