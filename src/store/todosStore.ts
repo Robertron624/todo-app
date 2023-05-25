@@ -6,11 +6,11 @@ export const useTodosStore = create(() => ({
         { id: 2, text: "Try immer", done: false },
         { id: 3, text: "Tweet about it", done: false },
     ],
-    addTodo: (text: string) => {
+    addTodo: (text: string, done: boolean) => {
         useTodosStore.setState((state) => ({
             todos: [
                 ...state.todos,
-                { id: state.todos.length + 1, text, done: false },
+                { id: state.todos.length + 1, text, done: done },
             ],
         }));
     },

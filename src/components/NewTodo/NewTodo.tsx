@@ -7,7 +7,9 @@ const NewTodo = () => {
   const addTodo = useTodosStore((state) => state.addTodo)
 
   const [ todoText, setTodoText ] = useState<string>('')
- 
+
+  const [ done, setDone ] = useState<boolean>(false)
+
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
@@ -15,11 +17,15 @@ const NewTodo = () => {
       alert("Todo text cannot be blank")
       return
     }
-    addTodo(todoText)
+    addTodo(todoText, done)
   }
 
   const handleText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoText(e.target.value)
+  }
+
+  const handleDone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDone(e.target.checked)
   }
 
 
@@ -27,7 +33,7 @@ const NewTodo = () => {
     <form onSubmit={handleSubmit} action="POST">
         <label htmlFor="done">
           <span className='sr-only'>Done</span>
-          <input type="checkbox" name="done" id="done" />
+          <input checked={done} onChange={handleDone} type="checkbox" name="done" id="done" />
         </label>
         <label htmlFor="todo">
           <span className='sr-only'>New Todo</span>
