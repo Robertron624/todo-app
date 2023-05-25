@@ -12,14 +12,16 @@ function App() {
 
     const [activeFilter, setActiveFilter] = useState<string>("all");
 
-    const todos = useTodosStore((state) => state.todos)
+    const todos = useTodosStore((state) => state.todos);
+
+    const removeTodo = useTodosStore((state) => state.removeTodo);
 
     const [filteredTodos, setFilteredTodos] = useState<ToDo[]>(todos);
 
     // Re-render when the store's state has been updated (Todo done/undone, new Todo and remove Todo)
     useEffect(() => {
         setFilteredTodos(todos)
-    }, [todos])
+    }, [todos]);
 
     const handleFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
         const filter = e.currentTarget.id;
@@ -38,6 +40,14 @@ function App() {
                 break;
         }
     };
+
+    const clearCompleted = () => {
+        todos.forEach((todo) => {
+            if(todo.done == true) {
+                removeTodo(todo.id)
+            }
+        })
+    }
 
     return (
             <ThemeContext.Provider value={{ theme, setTheme }}>
@@ -62,7 +72,7 @@ function App() {
                                         }{" "}
                                         items left
                                     </span>
-                                    <button className="clear">
+                                    <button onClick={clearCompleted} className="clear">
                                         Clear Completed
                                     </button>
                                 </div>
