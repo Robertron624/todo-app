@@ -1,36 +1,18 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import "./App.scss";
 import { ThemeContext } from "./contexts/themeContext";
-import { TodosContext } from "./contexts/TodosContext";
 import Layout from "./layout";
 import NewTodo from "./components/NewTodo/NewTodo";
 import Todo from "./components/TodoComponent/Todo";
 import { ToDo } from "./types";
-
-// const mockTodos = [
-//   {
-//     id: 1,
-//     text: 'Complete online JavaScript course',
-//     done: true
-//   },
-//   {
-//     id: 2,
-//     text: 'Jog around the park 3x',
-//     done: false
-//   },
-//   {
-//     id: 3,
-//     text: '10 minutes meditation',
-//     done: false
-//   },
-// ]
+import { useTodosStore } from "./store/todosStore";
 
 function App() {
     const [theme, setTheme] = useState<string>("light");
 
     const [activeFilter, setActiveFilter] = useState<string>("all");
 
-    const { todos, setTodos } = useContext(TodosContext);
+    const todos = useTodosStore((state) => state.todos)
 
     const [filteredTodos, setFilteredTodos] = useState<ToDo[]>(todos);
 
@@ -53,7 +35,6 @@ function App() {
     };
 
     return (
-        <TodosContext.Provider value={{ todos, setTodos }}>
             <ThemeContext.Provider value={{ theme, setTheme }}>
                 <div className={`theme-${theme}`}>
                     <Layout>
@@ -128,7 +109,6 @@ function App() {
                     </Layout>
                 </div>
             </ThemeContext.Provider>
-        </TodosContext.Provider>
     );
 }
 
