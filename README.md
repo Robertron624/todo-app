@@ -62,9 +62,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - [React](https://reactjs.org/) - JS library
 - [Sass](https://sass-lang.com/) - CSS pre-processor
 - [vite](https://vitejs.dev/) - Build tool
-
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [Zustand](https://docs.pmnd.rs/zustand/getting-started) - State management
 
 ### What I learned
 
@@ -103,6 +101,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 - [Pure CSS Custom Checkbox Style](https://moderncss.dev/pure-css-custom-checkbox-style/) - This is an amazing article which helped me finally understand how to implement custom checkboxes in react with the use of sass (one of my favorite CSS pre-processor). If you want to create custom checkboxes, give this article a read.
 
+- [Zustand Introduction](https://docs.pmnd.rs/zustand/getting-started/introduction) - This is the official Zustand docs, required if it's your first time working with zustand
 
 ## Author
 

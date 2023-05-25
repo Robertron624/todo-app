@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.scss";
 import { ThemeContext } from "./contexts/themeContext";
 import Layout from "./layout";
@@ -15,6 +15,11 @@ function App() {
     const todos = useTodosStore((state) => state.todos)
 
     const [filteredTodos, setFilteredTodos] = useState<ToDo[]>(todos);
+
+    // Re-render when the store's state has been updated (Todo done/undone, new Todo and remove Todo)
+    useEffect(() => {
+        setFilteredTodos(todos)
+    }, [todos])
 
     const handleFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
         const filter = e.currentTarget.id;
