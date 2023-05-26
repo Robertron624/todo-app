@@ -33,6 +33,7 @@ const NewTodo = () => {
     <form onSubmit={handleSubmit} action="POST">
         <label htmlFor="done">
           <span className='sr-only'>Done</span>
+          {done ? <img className='check' src="/icon-check.svg" alt="" />: ''}   
           <input checked={done} onChange={handleDone} type="checkbox" name="done" id="done" />
         </label>
         <label htmlFor="todo">

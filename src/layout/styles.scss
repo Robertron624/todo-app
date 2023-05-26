@@ -19,6 +19,10 @@ header {
         display: flex;
         width: 90%;
 
+        @include desktop {
+            width: $desktop-container-mw;
+        }
+
         .logo {
             color: white;
             letter-spacing: 10px;

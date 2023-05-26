@@ -29,6 +29,18 @@ form {
 
     label {
         display: flex;
+        position: relative;
+
+        .check {
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+        }
 
         #todo {
 
