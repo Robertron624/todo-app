@@ -17,7 +17,7 @@ $dark-grayish-blue: hsl(236, 9%, 61%);
 
 // // ### Dark Theme
 
-// $very-dark-blue: hsl(235, 21%, 11%);
+$very-dark-blue: hsl(235, 21%, 11%);
 // $very-dark-desaturated-blue: hsl(235, 24%, 19%);
 // $light-grayish-blue: hsl(234, 39%, 85%);
 // $light-grayish-blue-hover: hsl(236, 33%, 92%);
@@ -37,6 +37,7 @@ $themes: (
         todo-text: black,
         header-background: url(/bg-desktop-light.jpg) no-repeat center/cover,
         header-background-mobile: url(/bg-mobile-light.jpg) no-repeat center/cover,
+        button-hover: hsl(235, 21%, 11%),
     ),
     dark: (
         main-background: hsl(235, 21%, 11%),
@@ -49,6 +50,7 @@ $themes: (
         very-dark-grayish-blue-2: hsl(237, 14%, 26%),
         header-background: url(/bg-desktop-dark.jpg) no-repeat center/cover,
         header-background-mobile: url(/bg-mobile-dark.jpg) no-repeat center/cover,
+        button-hover: hsl(236, 33%, 92%),
     ),
 );
 

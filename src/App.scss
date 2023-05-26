@@ -55,6 +55,13 @@
         font-weight: 700;
         cursor: pointer;
         font-size: 12px;
+        transition: color .3s ease-in-out;
+
+        &:hover {
+          @include themify($themes) {
+            color: themed(button-hover);
+          }
+        }
 
         @include desktop {
           margin-right: 1rem;
@@ -115,6 +122,17 @@
 
       .active {
         color: $-bright-blue;
+      }
+
+      .inactive {
+
+        transition: color .3s ease-in-out;
+        
+        &:hover {
+          @include themify($themes) {
+            color: themed(button-hover);
+          }
+        }
       }
     }
   }

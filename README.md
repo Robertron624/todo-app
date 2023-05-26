@@ -101,6 +101,8 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 - [Type the onSubmit event in React (TypeScript)](https://bobbyhadz.com/blog/typescript-react-onsubmit-event-type) - This article is great for using typescript and inputs in react for correct type checking.
 
+
+
 ## Author
 
 -   Personal Website - [Robert Ramirez](https://robert-ramirez.netlify.app)
@@ -109,4 +111,5 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+[Fatz Code](https://www.youtube.com/@FaztCode) and it's [React Dnd Kit - Drag and Drop en React
+](https://www.youtube.com/watch?v=swFjfjLXe3I&list=WL&index=16) video helped me understand how to easily implement drag and drop in react.

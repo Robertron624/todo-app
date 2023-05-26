@@ -99,7 +99,7 @@ function App() {
                                             className={
                                                 activeFilter == "active"
                                                     ? "active"
-                                                    : ""
+                                                    : "inactive"
                                             }
                                         >
                                             Active
@@ -112,7 +112,7 @@ function App() {
                                             className={
                                                 activeFilter == "completed"
                                                     ? "active"
-                                                    : ""
+                                                    : "inactive"
                                             }
                                         >
                                             Completed
