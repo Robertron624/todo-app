@@ -16,12 +16,21 @@
         background: themed(new-todo-background);
     }
 
+    @include desktop {
+        width: 100%;
+        padding: 1.3rem 0rem;
+    }
+
     .done-name {
 
         position: relative;
         display: flex;
         align-items: center;
         gap: .5rem;
+
+        @include desktop {
+            margin-left: 1rem;
+        }
 
         .check {
             position: absolute;
@@ -76,6 +85,10 @@
     img {
         width: 1rem;
         height: 1rem;
+
+        @include desktop {
+            margin-right: 1rem;
+        }
     }
 
     .todo-text {

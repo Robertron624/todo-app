@@ -120,6 +120,9 @@ function App() {
                                     </li>
                                 </ul>
                             </section>
+                            <p className="drag">
+                                Drag and drop to reorder list
+                            </p>
                         </main>
                     </Layout>
                 </div>
