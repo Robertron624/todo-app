@@ -103,6 +103,13 @@
         font-size: 14px;
         cursor: pointer;
 
+
+        /* No text selection */
+        -moz-user-select:none; /* firefox */
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE*/
+        user-select: none; /* Standard syntax */
+
         @include themify($themes) {
             color: themed(todo-text);
         }

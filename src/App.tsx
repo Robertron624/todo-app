@@ -1,4 +1,11 @@
 import { useState, useEffect } from "react";
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import {
+    SortableContext,
+    arrayMove,
+    verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+
 import "./App.scss";
 import { ThemeContext } from "./contexts/themeContext";
 import Layout from "./layout";
@@ -49,127 +56,155 @@ function App() {
         });
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const handleDragEnd = (event: any) => {
+
+        const { active, over } = event;
+        if (active.id !== over.id) {
+            setFilteredTodos((filteredTodos) => {
+                const oldIndex = todos.findIndex(
+                    (todo) => todo.id === active.id
+                );
+                const newIndex = filteredTodos.findIndex((todo) => todo.id === over.id);
+                return arrayMove(filteredTodos, oldIndex, newIndex);
+            });
+        }
+    };
+
     return (
         <ThemeContext.Provider value={{ theme, setTheme }}>
-            <div className={`theme-${theme}`}>
-                <Layout>
-                    <main className="content-wrapper">
-                        <NewTodo />
-                        <section className="todos-list">
-                            <ul>
-                                {filteredTodos.map((todo) => (
-                                    <li key={todo.id}>
-                                        <Todo {...todo} />
-                                    </li>
-                                ))}
-                            </ul>
-                            <div className="total">
-                                <span>
-                                    {
-                                        filteredTodos.filter(
-                                            (todo) => todo.done != true
-                                        ).length
-                                    }{" "}
-                                    items left
-                                </span>
-                                <section className="filters">
-                                    <ul className="filters-wrapper">
-                                        <li>
-                                            <button
-                                                onClick={handleFilter}
-                                                id="all"
-                                                className={
-                                                    activeFilter == "all"
-                                                        ? "active"
-                                                        : ""
-                                                }
-                                            >
-                                                All
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                onClick={handleFilter}
-                                                id="active"
-                                                className={
-                                                    activeFilter == "active"
-                                                        ? "active"
-                                                        : "inactive"
-                                                }
-                                            >
-                                                Active
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                onClick={handleFilter}
-                                                id="completed"
-                                                className={
-                                                    activeFilter == "completed"
-                                                        ? "active"
-                                                        : "inactive"
-                                                }
-                                            >
-                                                Completed
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </section>
-                                <button
-                                    onClick={clearCompleted}
-                                    className="clear"
+            <DndContext
+                collisionDetection={closestCenter}
+                onDragEnd={handleDragEnd}
+            >
+                <div className={`theme-${theme}`}>
+                    <Layout>
+                        <main className="content-wrapper">
+                            <NewTodo />
+                            <section className="todos-list">
+                                <SortableContext
+                                    items={filteredTodos}
+                                    strategy={verticalListSortingStrategy}
                                 >
-                                    Clear Completed
-                                </button>
-                            </div>
-                        </section>
-                        <section className="filters">
-                            <ul className="filters-wrapper">
-                                <li>
+                                    <ul>
+                                        {filteredTodos.map((todo) => (
+                                            <li key={todo.id}>
+                                                <Todo {...todo} />
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </SortableContext>
+                                <div className="total">
+                                    <span>
+                                        {
+                                            filteredTodos.filter(
+                                                (todo) => todo.done != true
+                                            ).length
+                                        }{" "}
+                                        items left
+                                    </span>
+                                    <section className="filters">
+                                        <ul className="filters-wrapper">
+                                            <li>
+                                                <button
+                                                    onClick={handleFilter}
+                                                    id="all"
+                                                    className={
+                                                        activeFilter == "all"
+                                                            ? "active"
+                                                            : ""
+                                                    }
+                                                >
+                                                    All
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    onClick={handleFilter}
+                                                    id="active"
+                                                    className={
+                                                        activeFilter == "active"
+                                                            ? "active"
+                                                            : "inactive"
+                                                    }
+                                                >
+                                                    Active
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    onClick={handleFilter}
+                                                    id="completed"
+                                                    className={
+                                                        activeFilter ==
+                                                        "completed"
+                                                            ? "active"
+                                                            : "inactive"
+                                                    }
+                                                >
+                                                    Completed
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </section>
                                     <button
-                                        onClick={handleFilter}
-                                        id="all"
-                                        className={
-                                            activeFilter == "all"
-                                                ? "active"
-                                                : ""
-                                        }
+                                        onClick={clearCompleted}
+                                        className="clear"
                                     >
-                                        All
+                                        Clear Completed
                                     </button>
-                                </li>
-                                <li>
-                                    <button
-                                        onClick={handleFilter}
-                                        id="active"
-                                        className={
-                                            activeFilter == "active"
-                                                ? "active"
-                                                : "inactive"
-                                        }
-                                    >
-                                        Active
-                                    </button>
-                                </li>
-                                <li>
-                                    <button
-                                        onClick={handleFilter}
-                                        id="completed"
-                                        className={
-                                            activeFilter == "completed"
-                                                ? "active"
-                                                : "inactive"
-                                        }
-                                    >
-                                        Completed
-                                    </button>
-                                </li>
-                            </ul>
-                        </section>
-                        <p className="drag">Drag and drop to reorder list</p>
-                    </main>
-                </Layout>
-            </div>
+                                </div>
+                            </section>
+                            <section className="filters">
+                                <ul className="filters-wrapper">
+                                    <li>
+                                        <button
+                                            onClick={handleFilter}
+                                            id="all"
+                                            className={
+                                                activeFilter == "all"
+                                                    ? "active"
+                                                    : ""
+                                            }
+                                        >
+                                            All
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            onClick={handleFilter}
+                                            id="active"
+                                            className={
+                                                activeFilter == "active"
+                                                    ? "active"
+                                                    : "inactive"
+                                            }
+                                        >
+                                            Active
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            onClick={handleFilter}
+                                            id="completed"
+                                            className={
+                                                activeFilter == "completed"
+                                                    ? "active"
+                                                    : "inactive"
+                                            }
+                                        >
+                                            Completed
+                                        </button>
+                                    </li>
+                                </ul>
+                            </section>
+                            <p className="drag">
+                                Drag and drop to reorder list
+                            </p>
+                        </main>
+                    </Layout>
+                </div>
+            </DndContext>
         </ThemeContext.Provider>
     );
 }

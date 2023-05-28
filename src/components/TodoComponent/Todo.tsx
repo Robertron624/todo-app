@@ -1,32 +1,64 @@
-import { useTodosStore } from '../../store/todosStore'
-import { ToDo } from '../../types'
-import './index.scss'
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
-const Todo = ({text, done, id}:ToDo) => {
+import { useTodosStore } from "../../store/todosStore";
+import { ToDo } from "../../types";
+import "./index.scss";
 
-  const toggleTodo = useTodosStore((state) => state.toggleTodo)
+const Todo = ({ text, done, id }: ToDo) => {
+    const { attributes, listeners, setNodeRef, transform, transition } =
+        useSortable({ id });
 
-  const removeTodo = useTodosStore((state) => state.removeTodo)
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+    };
 
-  const handleDone = () => {
-    toggleTodo(id)
-  }
+    const toggleTodo = useTodosStore((state) => state.toggleTodo);
 
-  const handleRemoveTodo = () => {
-    removeTodo(id)
-  }
+    const removeTodo = useTodosStore((state) => state.removeTodo);
 
-  return (
-    <div className='todo-wrapper'>
-        <div className="done-name">
-            {/* Only show check mark when todo is done */}
-            {done ? <img className='check' src="/icon-check.svg" alt="" />: ''}      
-            <input onChange={handleDone} checked={done} type="checkbox" name="done" id="done" />
-            <span className={`todo-text ${done ? 'done' : ''}`}>{text}</span>
+    const handleDone = () => {
+        toggleTodo(id);
+    };
+
+    const handleRemoveTodo = () => {
+        removeTodo(id);
+    };
+
+    return (
+        <div
+            className="todo-wrapper"
+            {...attributes}
+            {...listeners}
+            ref={setNodeRef}
+            style={style}
+        >
+            <div className="done-name">
+                {/* Only show check mark when todo is done */}
+                {done ? (
+                    <img className="check" src="/icon-check.svg" alt="" />
+                ) : (
+                    ""
+                )}
+                <input
+                    onChange={handleDone}
+                    checked={done}
+                    type="checkbox"
+                    name="done"
+                    id="done"
+                />
+                <span className={`todo-text ${done ? "done" : ""}`}>
+                    {text}
+                </span>
+            </div>
+            <img
+                onClick={handleRemoveTodo}
+                src="/icon-cross.svg"
+                alt="cross icon"
+            />
         </div>
-        <img onClick={handleRemoveTodo} src="/icon-cross.svg" alt="cross icon" />
-    </div>
-  )
-}
+    );
+};
 
-export default Todo
+export default Todo;
