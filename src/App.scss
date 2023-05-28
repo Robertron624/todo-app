@@ -44,8 +44,18 @@
 
       @include desktop {
         width: 100%;
-        padding: 1.3rem 0rem;
-        border-radius: 0 0 0 0;
+        padding: .8rem 0rem;
+      }
+
+      .filters {
+        border-top: none;
+        display: none;
+        width: 40%;
+        padding: 0;
+
+        @include desktop {
+          display: flex;
+        }
       }
 
       button {
@@ -82,6 +92,12 @@
           border-radius: 10px 10px 0 0;
         }
       }
+    }
+  }
+
+  & > .filters {
+    @include desktop {
+      display: none !important;
     }
   }
 
