@@ -60,9 +60,10 @@ function App() {
     const handleDragEnd = (event: any) => {
 
         const { active, over } = event;
+
         if (active.id !== over.id) {
             setFilteredTodos((filteredTodos) => {
-                const oldIndex = todos.findIndex(
+                const oldIndex = filteredTodos.findIndex(
                     (todo) => todo.id === active.id
                 );
                 const newIndex = filteredTodos.findIndex((todo) => todo.id === over.id);
