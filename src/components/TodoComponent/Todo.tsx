@@ -29,10 +29,10 @@ const Todo = ({ text, done, id }: ToDo) => {
     return (
         <div
             className="todo-wrapper"
-            {...attributes}
-            {...listeners}
-            ref={setNodeRef}
-            style={style}
+            // {...attributes}
+            // {...listeners}
+            // ref={setNodeRef}
+            // style={style}
         >
             <div className="done-name">
                 {/* Only show check mark when todo is done */}
