@@ -23,6 +23,8 @@ function App() {
 
     const removeTodo = useTodosStore((state) => state.removeTodo);
 
+    const reorderTodo = useTodosStore((state) => state.reorderTodo);
+
     const [filteredTodos, setFilteredTodos] = useState<ToDo[]>(todos);
 
     const sensors = useSensors(
@@ -69,15 +71,18 @@ function App() {
         const { active, over } = event;
 
         if (active.id !== over.id) {
+            const newIndex = filteredTodos.findIndex(
+                (todo) => todo.id === over.id
+            );
             setFilteredTodos((filteredTodos) => {
                 const oldIndex = filteredTodos.findIndex(
                     (todo) => todo.id === active.id
                 );
-                const newIndex = filteredTodos.findIndex(
-                    (todo) => todo.id === over.id
-                );
+
                 return arrayMove(filteredTodos, oldIndex, newIndex);
             });
+
+            reorderTodo(active.id, newIndex);
         }
     };
 

@@ -24,4 +24,15 @@ export const useTodosStore = create(() => ({
         useTodosStore.setState((state) => ({
             todos: state.todos.filter((todo) => todo.id !== id),
         })),
+
+    reorderTodo: (id: number, position: number) =>
+        useTodosStore.setState((state) => {
+            const todos = [...state.todos];
+            const todo = todos.find((todo) => todo.id === id);
+            if (!todo) return;
+            const idx = todos.indexOf(todo);
+            todos.splice(idx, 1);
+            todos.splice(position, 0, todo);
+            return { todos };
+        }),
 }));
