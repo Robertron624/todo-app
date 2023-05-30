@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DndContext, closestCenter } from "@dnd-kit/core";
+import { DndContext, PointerSensor, closestCenter, useSensor, useSensors } from "@dnd-kit/core";
 import {
     SortableContext,
     arrayMove,
@@ -24,6 +24,14 @@ function App() {
     const removeTodo = useTodosStore((state) => state.removeTodo);
 
     const [filteredTodos, setFilteredTodos] = useState<ToDo[]>(todos);
+
+    const sensors = useSensors(
+        useSensor(PointerSensor, {
+            activationConstraint: {
+                distance: 8,
+            },
+        })
+    );
 
     // Re-render when the store's state has been updated (Todo done/undone, new Todo and remove Todo)
     useEffect(() => {
@@ -58,7 +66,6 @@ function App() {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleDragEnd = (event: any) => {
-
         const { active, over } = event;
 
         if (active.id !== over.id) {
@@ -66,7 +73,9 @@ function App() {
                 const oldIndex = filteredTodos.findIndex(
                     (todo) => todo.id === active.id
                 );
-                const newIndex = filteredTodos.findIndex((todo) => todo.id === over.id);
+                const newIndex = filteredTodos.findIndex(
+                    (todo) => todo.id === over.id
+                );
                 return arrayMove(filteredTodos, oldIndex, newIndex);
             });
         }
@@ -77,6 +86,7 @@ function App() {
             <DndContext
                 collisionDetection={closestCenter}
                 onDragEnd={handleDragEnd}
+                sensors={sensors}
             >
                 <div className={`theme-${theme}`}>
                     <Layout>
