@@ -36,18 +36,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+![image](https://github.com/Robertron624/todo-app/assets/72587880/0b1c1247-a964-49bf-ab0e-74a4c79eb049)
 
 ### Links
 
 -   Solution URL: [Github repository](https://github.com/Robertron624/todo-app)
--   Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+-   Live Site URL: [Netlify site](https://legendary-cannoli-572b42.netlify.app/)
 
 ## My process
 
@@ -69,12 +63,6 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 With this code I learned something I was struggling with for a while, how to implement dark mode in react with the use of sass (one of my favorite CSS pre-processor). I also learned how to implement custom checkboxes in react with the use of sass. I also learned how to use Zustand for state management, which is a great and easier alternative to Redux.
 Finally I learned the basics of drag and drop in react with the use of react-dnd.
 
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
 
 The code for handling the light/dark theme
 ```scss
