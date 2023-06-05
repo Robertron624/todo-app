@@ -29,7 +29,9 @@ export const useTodosStore = create(() => ({
         useTodosStore.setState((state) => {
             const todos = [...state.todos];
             const todo = todos.find((todo) => todo.id === id);
-            if (!todo) return;
+            if (!todo) return {
+                todos
+            };
             const idx = todos.indexOf(todo);
             todos.splice(idx, 1);
             todos.splice(position, 0, todo);
