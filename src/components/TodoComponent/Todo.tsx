@@ -46,7 +46,6 @@ const Todo = ({ text, done, id }: ToDo) => {
                     checked={done}
                     type="checkbox"
                     name="done"
-                    id="done"
                 />
                 <span className={`todo-text ${done ? "done" : ""}`}>
                     {text}

@@ -25,6 +25,7 @@ const Header = () => {
                             }.svg`}
                             alt=""
                         />
+                        Switch Theme
                     </button>
                 </div>
             </div>
