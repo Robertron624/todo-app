@@ -34,7 +34,7 @@ const NewTodo = () => {
         <label htmlFor="done">
           <span className='sr-only'>Done</span>
           {done ? <img className='check' src="/icon-check.svg" alt="" />: ''}   
-          <input checked={done} onChange={handleDone} type="checkbox" name="done" id="done" />
+          <input checked={done} onChange={handleDone} type="checkbox" name="done"/>
         </label>
         <label htmlFor="todo">
           <span className='sr-only'>New Todo</span>

@@ -27,6 +27,7 @@ function App() {
 
     const [filteredTodos, setFilteredTodos] = useState<ToDo[]>(todos);
 
+    // Sensor to tell DndKit to trigger a drag only when the user drags a minimum distance, allowing the click event to be triggered when the user clicks on the checkbox
     const sensors = useSensors(
         useSensor(PointerSensor, {
             activationConstraint: {
@@ -97,7 +98,7 @@ function App() {
                     <Layout>
                         <main className="content-wrapper">
                             <NewTodo />
-                            <section className="todos-list">
+                            <div className="todos-list">
                                 <SortableContext
                                     items={filteredTodos}
                                     strategy={verticalListSortingStrategy}
@@ -119,12 +120,11 @@ function App() {
                                         }{" "}
                                         items left
                                     </span>
-                                    <section className="filters">
+                                    <div className="filters">
                                         <ul className="filters-wrapper">
                                             <li>
                                                 <button
                                                     onClick={handleFilter}
-                                                    id="all"
                                                     className={
                                                         activeFilter == "all"
                                                             ? "active"
@@ -137,7 +137,6 @@ function App() {
                                             <li>
                                                 <button
                                                     onClick={handleFilter}
-                                                    id="active"
                                                     className={
                                                         activeFilter == "active"
                                                             ? "active"
@@ -150,7 +149,6 @@ function App() {
                                             <li>
                                                 <button
                                                     onClick={handleFilter}
-                                                    id="completed"
                                                     className={
                                                         activeFilter ==
                                                         "completed"
@@ -162,7 +160,7 @@ function App() {
                                                 </button>
                                             </li>
                                         </ul>
-                                    </section>
+                                    </div>
                                     <button
                                         onClick={clearCompleted}
                                         className="clear"
@@ -170,13 +168,12 @@ function App() {
                                         Clear Completed
                                     </button>
                                 </div>
-                            </section>
-                            <section className="filters">
+                            </div>
+                            <div className="filters">
                                 <ul className="filters-wrapper">
                                     <li>
                                         <button
                                             onClick={handleFilter}
-                                            id="all"
                                             className={
                                                 activeFilter == "all"
                                                     ? "active"
@@ -189,7 +186,6 @@ function App() {
                                     <li>
                                         <button
                                             onClick={handleFilter}
-                                            id="active"
                                             className={
                                                 activeFilter == "active"
                                                     ? "active"
@@ -202,7 +198,6 @@ function App() {
                                     <li>
                                         <button
                                             onClick={handleFilter}
-                                            id="completed"
                                             className={
                                                 activeFilter == "completed"
                                                     ? "active"
@@ -213,7 +208,7 @@ function App() {
                                         </button>
                                     </li>
                                 </ul>
-                            </section>
+                            </div>
                             <p className="drag">
                                 Drag and drop to reorder list
                             </p>
